@@ -1,5 +1,7 @@
 # Indigo Book MCP
 
+Public repo: [open-legal-tools/indigo-book](https://github.com/open-legal-tools/indigo-book).
+
 A local, read-only [MCP](https://modelcontextprotocol.io/) of
 [The Indigo Book: A Manual of Legal Citation](https://indigobook.github.io/).
 Full text of the CC0 second edition is searchable and retrievable by rule.
@@ -41,5 +43,5 @@ configured.
 
 ## Limits
 
-No Bluebook text is included. No message to Public.Resource.Org. Hosting,
-GitHub publication, and DNS each need a separate approval.
+No Bluebook text is included. No message to Public.Resource.Org. Hosting and
+DNS each need a separate approval.

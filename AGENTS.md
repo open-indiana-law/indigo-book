@@ -8,6 +8,7 @@ Fleet policy: https://github.com/noble-pirate/cruise-log/blob/main/AGENTS.md
 - **Human owner:** Danielle Teagarden
 - **Class:** shared tool / open legal infrastructure
 - **Portfolio record:** https://github.com/noble-pirate/cruise-log/blob/main/projects/indigo-book.md
+- **Public source:** https://github.com/open-legal-tools/indigo-book
 - **Source of truth:** vendored HTML under `data/source/`; SQLite store at `data/store/indigo-book.db`
 
 ## Working boundaries
