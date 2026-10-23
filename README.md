@@ -38,10 +38,12 @@ python3 -m pytest
 ```
 
 Default MCP transport is stdio. `--http` serves streamable HTTP on loopback
-`:8766` (landing `/`, terms `/terms`, MCP `/mcp`). No public host or DNS is
-configured.
+`:8766` (landing `/`, terms `/terms`, MCP `/mcp`).
+
+## Hosted prototype
+
+A hosted instance runs at **https://indigo.indianacle.com** (MCP endpoint `https://indigo.indianacle.com/mcp`; landing at the root, terms at `/terms`). Opening `/mcp` in a browser shows a JSON 406 error: that is the machine protocol, not a broken site. Add it to Claude as a custom connector with that URL, or to Claude Code with `claude mcp add --transport http indigo-book https://indigo.indianacle.com/mcp`.
 
 ## Limits
 
-No Bluebook text is included. No message to Public.Resource.Org. Hosting and
-DNS each need a separate approval.
+No Bluebook text is included. No message to Public.Resource.Org.
