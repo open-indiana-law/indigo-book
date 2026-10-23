@@ -1,6 +1,7 @@
 # Indigo Book MCP
 
-Public repo: [open-legal-tools/indigo-book](https://github.com/open-legal-tools/indigo-book).
+Public repo: [open-indiana-law/indigo-book](https://github.com/open-indiana-law/indigo-book).
+Hosted unofficial MCP: [indigo.openindianalaw.org](https://indigo.openindianalaw.org) (`/mcp`).
 
 A local, read-only [MCP](https://modelcontextprotocol.io/) of
 [The Indigo Book: A Manual of Legal Citation](https://indigobook.github.io/).
@@ -42,8 +43,14 @@ Default MCP transport is stdio. `--http` serves streamable HTTP on loopback
 
 ## Hosted prototype
 
-A hosted instance runs at **https://indigo.indianacle.com** (MCP endpoint `https://indigo.indianacle.com/mcp`; landing at the root, terms at `/terms`). Opening `/mcp` in a browser shows a JSON 406 error: that is the machine protocol, not a broken site. Add it to Claude as a custom connector with that URL, or to Claude Code with `claude mcp add --transport http indigo-book https://indigo.indianacle.com/mcp`.
+A hosted instance runs at **https://indigo.openindianalaw.org** (MCP endpoint
+`https://indigo.openindianalaw.org/mcp`; landing at the root, terms at
+`/terms`). Opening `/mcp` in a browser shows a JSON 406 error: that is the
+machine protocol, not a broken site. Add it to Claude as a custom connector
+with that URL, or to Claude Code with
+`claude mcp add --transport http indigo-book https://indigo.openindianalaw.org/mcp`.
 
 ## Limits
 
-No Bluebook text is included. No message to Public.Resource.Org.
+No Bluebook text is included. No message to Public.Resource.Org. This copy
+is unofficial and is not legal advice.

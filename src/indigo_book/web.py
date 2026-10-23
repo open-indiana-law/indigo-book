@@ -6,8 +6,10 @@ LANDING = """<!doctype html>
 <h1>Indigo Book MCP</h1>
 <p>A local, read-only MCP of <cite>The Indigo Book: A Manual of Legal Citation</cite>
 (CC0, Public.Resource.Org). Not The Bluebook. Not legal advice.</p>
-<p>Source: <a href="https://indigobook.github.io/">indigobook.github.io</a>.
-Terms: <a href="/terms">/terms</a>. MCP: <code>/mcp</code>.</p>
+<p>Hosted at <a href="https://indigo.openindianalaw.org/mcp">indigo.openindianalaw.org/mcp</a>.
+Source: <a href="https://github.com/open-indiana-law/indigo-book">open-indiana-law/indigo-book</a>
+and <a href="https://indigobook.github.io/">indigobook.github.io</a>.
+Terms: <a href="/terms">/terms</a>.</p>
 </body></html>
 """
 
