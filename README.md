@@ -53,7 +53,7 @@ with that URL, or to Claude Code with
 ## Usage counts (optional, off by default)
 
 A host can count how often each tool is used. Set `INDIGO_BOOK_USAGE_DB` to a file path and the server records, per UTC
-day and per tool, only the number of calls and errors. It never sees or stores IP addresses, queries, arguments, results
+day and per tool or page, only the number of calls (or page opens) and errors. It never sees or stores IP addresses, queries, arguments, results
 or session ids, so the totals cannot identify anyone, and a failure to write a count never breaks a tool. Read the totals
 with `python -m indigo_book.usage /path/to/usage.sqlite`. The hosted prototype publishes this policy so users know what
 is and is not measured.
