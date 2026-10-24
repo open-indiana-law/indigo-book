@@ -14,7 +14,7 @@ from mcp.types import ToolAnnotations
 from starlette.requests import Request
 from starlette.responses import HTMLResponse, JSONResponse
 
-from . import tools, web
+from . import tools, usage, web
 
 INSTRUCTIONS = (
     "The Indigo Book: A Manual of Legal Citation (CC0, Public.Resource.Org). "
@@ -47,6 +47,7 @@ def build_server(conn=None, host: str = "127.0.0.1", port: int = 8766):
         json_response=True,
     )
     db = conn or _connect()
+    usage.count_tools(mcp, usage.from_env())
     ro = dict(readOnlyHint=True, idempotentHint=True, openWorldHint=False, destructiveHint=False)
 
     @mcp.custom_route("/", methods=["GET"], name="landing")

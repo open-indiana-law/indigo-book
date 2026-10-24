@@ -10,6 +10,7 @@ LANDING = """<!doctype html>
 Source: <a href="https://github.com/open-indiana-law/indigo-book">open-indiana-law/indigo-book</a>
 and <a href="https://indigobook.github.io/">indigobook.github.io</a>.
 Terms: <a href="/terms">/terms</a>.</p>
+<p>This service counts only how many times each tool is used each day. It does not record what you ask.</p>
 </body></html>
 """
 
