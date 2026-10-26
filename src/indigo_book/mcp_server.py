@@ -60,6 +60,10 @@ def build_server(conn=None, host: str = "127.0.0.1", port: int = 8766):
     async def terms(_request: Request) -> HTMLResponse:
         return HTMLResponse(web.terms_html())
 
+    @mcp.custom_route("/favicon.svg", methods=["GET"], name="favicon")
+    async def favicon(_request: Request) -> Response:
+        return Response(web.favicon_svg(), media_type="image/svg+xml")
+
     @mcp.custom_route("/icon.svg", methods=["GET"], name="icon")
     async def icon(_request: Request) -> Response:
         return Response(web.icon_svg(), media_type="image/svg+xml")

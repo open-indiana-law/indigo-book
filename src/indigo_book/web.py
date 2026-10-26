@@ -41,7 +41,7 @@ LANDING = f"""<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Indigo Book MCP</title>
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>{_CSS}</style>
 </head>
 <body>
@@ -64,7 +64,7 @@ TERMS = f"""<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Indigo Book MCP terms</title>
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>{_CSS}</style>
 </head>
 <body>
@@ -94,3 +94,9 @@ def landing_html() -> str:
 
 def terms_html() -> str:
     return TERMS
+
+
+def favicon_svg() -> str:
+    """Hand-hinted 16 px cut of the locked mark (whole-pixel geometry) for browser tabs; /icon.svg stays the full mark."""
+    return """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="Open Indiana Law logo: a green dome, split like an open book, with a gold bookmark rising through it to a small gold light, above stone steps."><title>Open Indiana Law logo: a green dome, split like an open book, with a gold bookmark rising through it to a small gold light, above stone steps.</title><rect width="16" height="16" fill="#F6F0E2"/><path d="M1 11A7 7 0 0 1 7 4.07V11ZM15 11A7 7 0 0 0 9 4.07V11Z" fill="#2E8068"/><rect x="7" y="4" width="2" height="7" fill="#B3820B"/><circle cx="8" cy="2" r="1.5" fill="#B3820B"/><rect x="2" y="12" width="12" height="1" fill="#8F7E5E" shape-rendering="crispEdges"/><rect x="2" y="14" width="12" height="1" fill="#8F7E5E" shape-rendering="crispEdges"/></svg>
+"""

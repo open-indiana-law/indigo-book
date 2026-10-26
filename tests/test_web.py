@@ -16,3 +16,9 @@ def test_icon_is_the_locked_mark():
     svg = web.icon_svg()
     assert svg.startswith("<svg") and 'xmlns="http://www.w3.org/2000/svg"' in svg
     assert "#2E8068" in svg and "#B3820B" in svg and "#F6F0E2" in svg
+
+
+def test_favicon_is_the_hinted_16px_cut():
+    svg = web.favicon_svg()
+    assert 'viewBox="0 0 16 16"' in svg and "#2E8068" in svg
+    assert 'href="/favicon.svg"' in web.landing_html()
