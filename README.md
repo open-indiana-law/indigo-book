@@ -39,7 +39,7 @@ python3 -m pytest
 ```
 
 Default MCP transport is stdio. `--http` serves streamable HTTP on loopback
-`:8766` (landing `/`, terms `/terms`, MCP `/mcp`).
+`:8766` (landing `/`, terms `/terms`, icon `/icon.svg`, MCP `/mcp`).
 
 ## Hosted prototype
 
