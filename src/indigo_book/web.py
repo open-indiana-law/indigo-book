@@ -9,20 +9,30 @@ MARK_ALT = (
 BRAND_DIR = Path(__file__).resolve().parent / "brand"
 
 _CSS = """
-:root { color-scheme: light; }
-html, body { background: #F6F0E2; color: #14181F; }
+:root {
+  color-scheme: light dark;
+  --paper: #F6F0E2; --ink: #1C1917; --muted: #5C5348; --rule: #D6CBB6;
+  --card: #F9F5EA; --link: #1E5A46; --flag: #8F7E5E;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #14181F; --ink: #EFE9D8; --muted: #B8B1A0; --rule: #2C343F;
+    --card: #1D232C; --link: #6FC4A6; --flag: #B8B1A0;
+  }
+}
+html, body { background: var(--paper); color: var(--ink); }
 body {
   font: 17px/1.55 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   max-width: 40rem; margin: 0 auto; padding: 2.25rem 1.25rem 3rem;
 }
 .brand { margin: 0 0 1rem; }
-.brand img { display: block; width: 5.5rem; height: 5.5rem; }
+.brand img { display: block; width: 5.5rem; height: 5.5rem; border-radius: 0.75rem; }
 .flag { font: 0.78rem/1.3 ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: 0.08em; text-transform: uppercase; color: #8F7E5E; margin: 0 0 1rem; }
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--flag); margin: 0 0 1rem; }
 h1 { font-size: 1.85rem; font-weight: 600; margin: 0 0 0.75rem; }
 h2 { font-size: 1.15rem; margin: 1.75rem 0 0.5rem; }
 p, li { margin: 0 0 0.85rem; }
-a { color: #2E8068; }
+a { color: var(--link); }
 """
 
 
@@ -33,11 +43,48 @@ def brand_path(name: str) -> Path:
     return path
 
 
-def _head_icons() -> str:
-    return """  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+PUBLIC_HOST = "indigo.openindianalaw.org"
+OG_DESCRIPTION = "The Indigo Book, a CC0 citation manual, for AI assistants. Not legal advice."
+
+
+def _head_icons(title: str = "Indigo Book MCP", path: str = "/") -> str:
+    return f"""  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#F6F0E2">"""
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#F6F0E2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#14181F" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="{OG_DESCRIPTION}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Open Indiana Law">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{OG_DESCRIPTION}">
+  <meta property="og:url" content="https://{PUBLIC_HOST}{path}">
+  <meta property="og:image" content="https://{PUBLIC_HOST}/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Open Indiana Law: the open book dome mark above the name.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://{PUBLIC_HOST}/og.png">"""
+
+
+def manifest_json() -> str:
+    import json
+
+    return json.dumps({
+        "name": "Indigo Book MCP · Open Indiana Law",
+        "short_name": "Indigo Book MCP",
+        "description": "CC0 citation manual for AI assistants",
+        "start_url": "/",
+        "display": "browser",
+        "background_color": "#F6F0E2",
+        "theme_color": "#F6F0E2",
+        "icons": [
+            {"src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
+            {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+            {"src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any"},
+        ],
+    }, indent=2)
 
 
 def _logo() -> str:
@@ -51,7 +98,7 @@ def landing_html() -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Indigo Book MCP</title>
-{_head_icons()}
+{_head_icons("Indigo Book MCP", "/")}
   <style>{_CSS}</style>
 </head>
 <body>
@@ -78,7 +125,7 @@ def terms_html() -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Indigo Book MCP terms</title>
-{_head_icons()}
+{_head_icons("Indigo Book MCP terms", "/terms")}
   <style>{_CSS}</style>
 </head>
 <body>
@@ -104,7 +151,7 @@ def privacy_html() -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Indigo Book MCP — privacy</title>
-{_head_icons()}
+{_head_icons("Indigo Book MCP — privacy", "/privacy")}
   <style>{_CSS}</style>
 </head>
 <body>

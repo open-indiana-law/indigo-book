@@ -12,7 +12,7 @@ from typing import Any
 from mcp.server.fastmcp import FastMCP
 from mcp.types import ToolAnnotations
 from starlette.requests import Request
-from starlette.responses import FileResponse, HTMLResponse, JSONResponse
+from starlette.responses import FileResponse, HTMLResponse, JSONResponse, Response
 
 from . import tools, usage, web
 
@@ -79,6 +79,18 @@ def build_server(conn=None, host: str = "127.0.0.1", port: int = 8766):
     @mcp.custom_route("/apple-touch-icon.png", methods=["GET"], name="apple_touch")
     async def apple_touch(_request: Request) -> FileResponse:
         return FileResponse(web.brand_path("apple-touch-icon.png"), media_type="image/png")
+
+    @mcp.custom_route("/site.webmanifest", methods=["GET"], name="manifest")
+    async def manifest(_request: Request) -> Response:
+        return Response(web.manifest_json(), media_type="application/manifest+json")
+
+    @mcp.custom_route("/og.png", methods=["GET"], name="og_image")
+    async def og_image(_request: Request) -> FileResponse:
+        return FileResponse(web.brand_path("og.png"), media_type="image/png")
+
+    @mcp.custom_route("/icon-512.png", methods=["GET"], name="icon_512")
+    async def icon_512(_request: Request) -> FileResponse:
+        return FileResponse(web.brand_path("icon-512.png"), media_type="image/png")
 
     @mcp.custom_route("/health", methods=["GET"], name="health")
     async def health(_request: Request) -> JSONResponse:
