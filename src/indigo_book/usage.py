@@ -88,7 +88,7 @@ def count_tools(mcp, counter: UsageCounter | None) -> None:
     mcp.tool = tool
 
 
-def count_pages(mcp, counter: UsageCounter | None, skip: tuple[str, ...] = ("/health", "/icon.svg", "/favicon.svg", "/favicon.ico", "/apple-touch-icon.png")) -> None:
+def count_pages(mcp, counter: UsageCounter | None, skip: tuple[str, ...] = ("/health", "/icon.svg", "/favicon.svg", "/favicon.ico", "/apple-touch-icon.png", "/site.webmanifest", "/og.png", "/icon-512.png")) -> None:
     """Count each web page open as one "page <route template>" per UTC day (never the address itself, so no case number or
     other part of a URL is kept). Health checks and the icon are not counted. Does nothing when counter is None."""
     if counter is None:
