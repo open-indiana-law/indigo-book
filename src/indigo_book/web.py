@@ -42,6 +42,9 @@ LANDING = f"""<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Indigo Book MCP</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#F6F0E2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#14181F" media="(prefers-color-scheme: dark)">
   <style>{_CSS}</style>
 </head>
 <body>
@@ -65,6 +68,9 @@ TERMS = f"""<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Indigo Book MCP terms</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#F6F0E2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#14181F" media="(prefers-color-scheme: dark)">
   <style>{_CSS}</style>
 </head>
 <body>
@@ -100,3 +106,18 @@ def favicon_svg() -> str:
     """Hand-hinted 16 px cut of the locked mark (whole-pixel geometry) for browser tabs; /icon.svg stays the full mark."""
     return """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="Open Indiana Law logo: a green dome, split like an open book, with a gold bookmark rising through it to a small gold light, above stone steps."><title>Open Indiana Law logo: a green dome, split like an open book, with a gold bookmark rising through it to a small gold light, above stone steps.</title><rect width="16" height="16" fill="#F6F0E2"/><path d="M1 11A7 7 0 0 1 7 4.07V11ZM15 11A7 7 0 0 0 9 4.07V11Z" fill="#2E8068"/><rect x="7" y="4" width="2" height="7" fill="#B3820B"/><circle cx="8" cy="2" r="1.5" fill="#B3820B"/><rect x="2" y="12" width="12" height="1" fill="#8F7E5E" shape-rendering="crispEdges"/><rect x="2" y="14" width="12" height="1" fill="#8F7E5E" shape-rendering="crispEdges"/></svg>
 """
+
+
+def manifest_json() -> str:
+    """Web app manifest: name, colours and the SVG icon. Colours match the site's light paper and dark ground."""
+    import json
+    return json.dumps({
+        "name": "Indigo Book MCP · Open Indiana Law",
+        "short_name": "Indigo Book MCP",
+        "description": "CC0 citation manual for AI assistants",
+        "start_url": "/",
+        "display": "browser",
+        "background_color": "#F6F0E2",
+        "theme_color": "#F6F0E2",
+        "icons": [{"src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}],
+    }, ensure_ascii=False)
