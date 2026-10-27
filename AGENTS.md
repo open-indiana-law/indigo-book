@@ -36,3 +36,7 @@ Fleet policy: https://github.com/noble-pirate/cruise-log/blob/main/AGENTS.md
 - **Staging / production:** none. Local stdio or loopback `:8766` only.
 - **Data classification:** public CC0 text plus original MCP code (MIT).
 - **Recovery:** rebuild the store from `data/source/` with `python3 -m indigo_book.ingest`.
+
+## Durable capture
+
+A germane markdown note, research file, or similar artifact created here is not finished until it is on a pushed GitHub branch and copied to Drive. Gigantic files (over 10 MiB, or video/archive binaries) need Danielle's gate. Never persist secrets, `.env`, or credentials. Log completed work in cruise-log ACTIVITY.md (tail). Update CURRENT.md (nose) when heading or next action changed. Canonical rule: https://github.com/noble-pirate/cruise-log/blob/main/decisions/require-germane-file-persistence-2026-10-27.md
